@@ -161,8 +161,8 @@ def photo(request):
         if form.is_valid():
             form.save()
             image = Photo.objects.last()
-            url = u"{server}{url}".format(**{"server": request.get_host(), "url": image.preview.url, })
-            params = {u"url": url}
+            url = "{server}{url}".format(**{"server": request.get_host(), "url": image.preview.url, })
+            params = {"url": url}
             response = requests.get(url=VISION_SERVER, params=params, )
             if response.ok:
                 text = response.text
