@@ -1,0 +1,4 @@
+# Compliment requirements
+Django==1.8.13
+django-debug-toolbar==1.4
+requests==2.10.0

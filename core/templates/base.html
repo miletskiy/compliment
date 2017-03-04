@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} </title>
+     <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" href=" {% static 'css/core.css' %}">
+    {% block extra_css %} <style type="text/css"></style> {% endblock extra_css %}
+</head>
+<body>
+    <h1>Hello, world!</h1>
+    <script type="text/javascript" src={% static "js/core.js" %}></script>
+</body>
+</html>
