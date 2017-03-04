@@ -38,11 +38,15 @@ def instagram(request):
             username=form.cleaned_data.get("user_name")
             looter=InstaLooter(profile=username)
             with open("outimagesfile.txt", "w") as output:
+                IMG_QUANTITY = 0
                 for media in looter.medias():
                     if media['is_video']:
                         url = looter.get_post_info(media['code'])['video_url']
                     else:
                         url = media['display_src']
+                    IMG_QUANTITY+=1
+                    if IMG_QUANTITY==10:
+                        break
                     output.write("{}\n".format(url))
 
             with open("outcomments.txt", "w") as output:
