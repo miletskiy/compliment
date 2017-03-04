@@ -1,0 +1,22 @@
+body {
+  min-height: 100vh;
+  padding-top: 70px;
+}
+h1 {
+  color: #3a5795;
+}
+.navbar-default {
+  background-color: #637bad;
+}
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+.navbar-default .navbar-nav .open a:hover {
+  color: #3a5795;
+}
+.navbar-default .navbar-nav li a {
+  color: #fff;
+}
+.dropdown-menu {
+  background-color: #637bad;
+}
