@@ -28,7 +28,7 @@ def twitter(request):
     """
     Twitter view
     """
-
+    text="success"
     consumer_key = "7vcleOTNnGiZWSBQVAfcDsYup"
     consumer_secret = "sc6y1yrOO7xNbDTt5HNwvTGwL59cdRDVuf1DOW9yetwrxlhwTH"
     access_key = "838041296296103936-SH8vBxIYv3SfeFqEfhT5OKgSbIajjpB"
@@ -76,17 +76,26 @@ def twitter(request):
                     #print "...%s tweets downloaded so far" % (len(alltweets))
 
                 # transform the tweepy tweets into a 2D array that will populate the csv
-                outtweets = [[tweet.text.encode("utf-8")] for tweet in alltweets]
-                print(outtweets)
+                outtweets = [tweet.text.encode("utf-8") for tweet in alltweets]
+                text_request="*".join(outtweets)
 
-                pass
+                params={"url":text_request}
 
-            get_all_tweets(username)
+                response=requests.get(VOVA_SERVER,params)
+
+                if response.ok:
+                    text = response.text
+                    print(text)
+                    return text
+                else:
+                    text="error"
+
+            text =get_all_tweets(username)
 
     else:
         form = NameForm()
 
-    return render(request, 'twitter.html', {'form': form})
+    return render(request, 'twitter.html', {'form': form,"text":text})
 
 
 def instagram(request):
