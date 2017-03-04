@@ -145,6 +145,7 @@ def photo(request):
     Photo view
     """
     text = ""
+    image = None
 
     if request.method == "POST":
         form = UploadPhotoForm(data=request.POST, files=request.FILES, )
@@ -165,4 +166,4 @@ def photo(request):
 
     form = UploadPhotoForm()
 
-    return render(request, 'photo.html', {"form": form, "text": text, })
+    return render(request, 'photo.html', {"form": form, "text": text, "image": image, })

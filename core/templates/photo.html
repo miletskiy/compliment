@@ -33,6 +33,11 @@
 
             </form>
         </div>
+        {% if image %}
+            <div class="col-xs-12 col-lg-6">
+                <img class="img-responsive" src="{{ image.preview.url }}" alt="{{ image.title }}">
+            </div>
+        {% endif %}
     </div>
     {% if text %}
         <p>{{ text }}</p>
