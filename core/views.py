@@ -77,6 +77,7 @@ def photo(request):
             print photo
 
             form.save()
+            # api call to server Vova
 
             messages.success(request, u"Success")
         else:
