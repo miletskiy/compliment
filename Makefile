@@ -53,4 +53,7 @@ endif
 help:
 	@cat README.md
 
+pip:
+	pip install -r requirements.txt
+
 # https://github.com/kaleissin/django-makefile/blob/master/Makefile
