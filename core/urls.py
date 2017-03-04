@@ -9,6 +9,9 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^twitter/$', views.twitter, name='twitter'),
+    url(r'^instagram/$', views.instagram, name='instagram'),
+    url(r'^photo/$', views.photo, name='photo'),
 ]
 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
