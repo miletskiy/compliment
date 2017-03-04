@@ -4,3 +4,4 @@ django-debug-toolbar==1.4
 Pillow==3.2.0
 requests==2.10.0
 instaLooter==0.6.0
+django-widget-tweaks==1.4.1
