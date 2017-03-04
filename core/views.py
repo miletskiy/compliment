@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.contrib import messages
 from instaLooter import InstaLooter
 
@@ -76,10 +75,6 @@ def photo(request):
     if request.method == "POST":
         form = UploadPhotoForm(data=request.POST, files=request.FILES, )
         if form.is_valid():
-
-            fcd = form.cleaned_data
-            # photo = fcd.get("preview")
-            # print photo.url
             form.save()
             # api call to server Vova
             photo = Photo.objects.last()

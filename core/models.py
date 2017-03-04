@@ -15,6 +15,7 @@ class Photo(models.Model):
     title = models.CharField(u"Title", max_length=250, blank=True, null=True)
     description = models.TextField(u"Description", blank=True, default="")
     preview = models.ImageField(upload_to="photos/%Y/%m/%d", blank=True)
+    url = models.URLField(default="", null=True, blank=True)
 
     def __unicode__(self):
         return u"{}: {}".format(self.title, self._meta.verbose_name)

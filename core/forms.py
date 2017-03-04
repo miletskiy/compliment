@@ -13,5 +13,5 @@ class UploadPhotoForm(forms.ModelForm):
 
     class Meta:
         model = Photo
-        fields = "__all__"
+        fields = ["title", "preview", ]
 
