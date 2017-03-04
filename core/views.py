@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from instaLooter import InstaLooter
 
+import re
 import tweepy
 import requests
 
@@ -78,21 +79,29 @@ def twitter(request):
                     #print "...%s tweets downloaded so far" % (len(alltweets))
 
                 # transform the tweepy tweets into a 2D array that will populate the csv
-                outtweets = [tweet.text.encode("utf-8") for tweet in alltweets]
-                text_request="*".join(outtweets)
 
-                params={"url":text_request}
+                processed_tweets = []
+                for tweet in all_tweets:
+                    processed_tweets.append(' '.join(re.sub(
+                        "(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet.text
+                        ).split()))
 
-                response=requests.get(VOVA_SERVER,params)
+                text_request = "*".join(processed_tweets)
+
+                params = {
+                    "url": text_request
+                }
+
+                response = requests.get(VISION_SERVER,params)
 
                 if response.ok:
                     text = response.text
                     print(text)
                     return text
                 else:
-                    text="error"
+                    text = "error"
 
-            text =get_all_tweets(username)
+            text = get_all_tweets(username)
 
     else:
         form = NameForm()
