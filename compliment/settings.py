@@ -26,8 +26,7 @@ SECRET_KEY = '*s%0b0q*9jf7#zw8su50c&wme&rna3v@o*9+j2b)3jmwa)vw_j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '138.68.78.155']
 
 # Application definition
 
@@ -53,6 +52,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+PORTAL_URL = 'http://138.68.78.155:8000'
+
 ROOT_URLCONF = 'compliment.urls'
 
 TEMPLATES = [
@@ -66,8 +67,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.media',
-                'django.core.context_processors.static',
             ],
         },
     },
