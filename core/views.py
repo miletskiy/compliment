@@ -159,9 +159,9 @@ def photo(request):
                 messages.success(request, u"Success")
             else:
                 text = u"Something went wrong ({error})".format(**{"error": response.status_code})
-                messages.error(request, u"Success")
+                messages.error(request, u"Something went wrong")
         else:
-            messages.error(request, u"Something went wrong ({error})".format(**{"error": form.errors}))
+            messages.error(request, u"{error}".format(**{"error": form.errors}))
 
     form = UploadPhotoForm()
 

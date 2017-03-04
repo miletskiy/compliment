@@ -35,6 +35,9 @@ h1 {
 .jumbotron-custom {
   background-color: rgba(99, 123, 173, 0.3);
 }
+.errorlist li {
+  color: red;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
