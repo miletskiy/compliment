@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.contrib import messages
 from instaLooter import InstaLooter
+import requests
+
+VOVA_SERVER = "http://138.68.78.155:8080"
+DJANGO_SERVER = "http://138.68.78.155:8000"
+
 
 from .forms import (
     NameForm,
@@ -70,7 +75,7 @@ def photo(request):
     """
     Photo view
     """
-
+    text = u"Success"
 
     if request.method == "POST":
         form = UploadPhotoForm(data=request.POST, files=request.FILES, )
@@ -78,12 +83,21 @@ def photo(request):
             form.save()
             # api call to server Vova
             photo = Photo.objects.last()
-            print photo.preview.url
+            # TODO: need refactor to use get_current_host()
+            url = "{server}{url}".format(**{"server": DJANGO_SERVER, "url": photo.preview.url, })
+            print url
+            url = "{server}{url}".format(**{"server": DJANGO_SERVER, "url": "/media/photos/2017/03/04/compliment.jpg", })
+            params = {"url": url}
+            response = requests.get(url=VOVA_SERVER, params=params, )
+
+            text = response.text if response.ok else u"Something went wrong ({error})".format(**{"error": response.status_code})
 
             messages.success(request, u"Success")
         else:
             form = UploadPhotoForm()
 
+            messages.success(request, u"Something went wrong ({error})".format(**{"error": form.errors}))
+
     form = UploadPhotoForm()
 
-    return render(request, 'photo.html', {"form": form })
+    return render(request, 'photo.html', {"form": form, "text": text, })
