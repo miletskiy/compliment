@@ -1,9 +1,20 @@
+/* Colors
+-------------------------------------------------- */
+/* Main styles
+-------------------------------------------------- */
 body {
   padding-top: 70px;
+  height: 100%;
+  width: 100%;
 }
 h1 {
   color: #3a5795;
 }
+.body-background {
+  background-image: url('../images/compliment.jpg');
+}
+/* Nav styles
+-------------------------------------------------- */
 .navbar-default {
   background-color: #637bad;
 }
@@ -18,6 +29,9 @@ h1 {
 }
 .dropdown-menu {
   background-color: #637bad;
+}
+.jumbotron-custom {
+  background-color: rgba(99, 123, 173, 0.3);
 }
 /* Sticky footer styles
 -------------------------------------------------- */

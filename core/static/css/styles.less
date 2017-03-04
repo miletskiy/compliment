@@ -1,18 +1,35 @@
-// colors
+/* Colors
+-------------------------------------------------- */
+
 @navy: #3a5795;
 @blue: #637bad;
 @lightblue: #adb9d3;
 @light: #edf0f5;
 @black: #333333;
 @white: #fff;
-body {
+// @transparent:rgba(58,87,149, 0.3);
+@transparent: rgba(99, 123, 173, 0.3);
 
+/* Main styles
+-------------------------------------------------- */
+
+body {
     padding-top: 70px;
+    height: 100%;
+    width: 100%;
 }
 
 h1 {
     color: @navy;
 }
+
+.body-background {
+    background-image: url('../images/compliment.jpg');
+}
+
+
+/* Nav styles
+-------------------------------------------------- */
 
 .navbar-default {
     background-color: @blue;
@@ -24,7 +41,7 @@ h1 {
         .open {
             a {
                 &:hover {
-                    color:@navy;
+                    color: @navy;
                 }
             }
         }
@@ -40,22 +57,29 @@ h1 {
     background-color: @blue;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+.jumbotron-custom {
+    background-color: @transparent;
 }
 
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}

@@ -9,12 +9,12 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href=" {% static 'css/core.css' %}">
-  <link rel="stylesheet" href=" {% static 'css/styles.css' %}">
-  {% block extra_css %}<style type="text/css"></style> {% endblock extra_css %}
+  <link rel="stylesheet" href=" {% static 'css/styles.css' %}"> {% block extra_css %}
+  <style type="text/css"></style> {% endblock extra_css %}
 </head>
 
-<body>
-{% block top_menu %}
+<body class="{% block body_background %} body-background{% endblock %}">
+  {% block top_menu %}
   <!-- Fixed navbar -->
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -25,12 +25,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Compliment</a>
+        <a class="navbar-brand" href="{% url 'core:index' %}">Compliment</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class=""><a href="{% url 'core:twitter' %}">via Twitter</a></li>
           <li><a href="{% url 'core:photo' %}">via Photo</a></li>
+          <li class=""><a href="{% url 'core:twitter' %}">via Twitter</a></li>
           <li><a href="{% url 'core:instagram' %}">via Instagramm</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -48,31 +48,28 @@
       <!--/.nav-collapse -->
     </div>
   </nav>
-{% endblock %}
-  <div class="container">
+  {% endblock %}
+  <div class="container image">
     <!-- Main component for a primary marketing message or call to action -->
     {% block container %}
-    <div class="jumbotron text-center">
+    <div class="jumbotron jumbotron-custom text-center">
       <h1 class="">Compliment service</h1>
       <p>Marketing bullshit</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem odio reprehenderit voluptatum aliquid suscipit veritatis aperiam repudiandae itaque et, animi illo magni, voluptate autem, omnis nostrum pariatur nulla est porro.</p>
       <p class="">
-        <a class="btn btn-lg btn-info" href="#" role="button">Try it for free</a>
+        <a class="btn btn-lg btn-danger" href="#" role="button">Try it for free</a>
       </p>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <h1></h1>
-      </div>
     </div>
     {% endblock %}
   </div>
   <!-- /container -->
+  {% block footer %}
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Footer info</p>
     </div>
   </footer>
+  {% endblock %}
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
