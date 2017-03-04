@@ -5,8 +5,10 @@ from instaLooter import InstaLooter
 import tweepy
 import requests
 
-VOVA_SERVER = "http://138.68.78.155:8080"
-DJANGO_SERVER = "http://138.68.78.155:8000"
+VISION_SERVER = "http://138.68.78.155:8080"
+# DJANGO_SERVER = "http://138.68.78.155:8000"
+# DJANGO_SERVER = request.get_host()
+
 
 from .forms import (
     NameForm,
@@ -142,28 +144,24 @@ def photo(request):
     """
     Photo view
     """
-    text = u"Success"
+    text = ""
 
     if request.method == "POST":
         form = UploadPhotoForm(data=request.POST, files=request.FILES, )
         if form.is_valid():
             form.save()
-            # api call to server Vova
-            photo = Photo.objects.last()
-            # TODO: need refactor to use get_current_host()
-            url = "{server}{url}".format(**{"server": DJANGO_SERVER, "url": photo.preview.url, })
-            print url
-            url = "{server}{url}".format(**{"server": DJANGO_SERVER, "url": "/media/photos/2017/03/04/compliment.jpg", })
-            params = {"url": url}
-            response = requests.get(url=VOVA_SERVER, params=params, )
-
-            text = response.text if response.ok else u"Something went wrong ({error})".format(**{"error": response.status_code})
-
-            messages.success(request, u"Success")
+            image = Photo.objects.last()
+            url = u"{server}{url}".format(**{"server": request.get_host(), "url": image.preview.url, })
+            params = {u"url": url}
+            response = requests.get(url=VISION_SERVER, params=params, )
+            if response.ok:
+                text = response.text
+                messages.success(request, u"Success")
+            else:
+                text = u"Something went wrong ({error})".format(**{"error": response.status_code})
+                messages.error(request, u"Success")
         else:
-            form = UploadPhotoForm()
-
-            messages.success(request, u"Something went wrong ({error})".format(**{"error": form.errors}))
+            messages.error(request, u"Something went wrong ({error})".format(**{"error": form.errors}))
 
     form = UploadPhotoForm()
 
