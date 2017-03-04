@@ -1,4 +1,5 @@
 # Compliment requirements
 Django==1.8.13
 django-debug-toolbar==1.4
+Pillow==3.2.0
 requests==2.10.0
