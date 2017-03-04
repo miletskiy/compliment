@@ -7,6 +7,7 @@ from .forms import (
     NameForm,
     UploadPhotoForm,
 )
+from .models import Photo
 
 
 def index(request):
@@ -73,11 +74,12 @@ def photo(request):
         if form.is_valid():
 
             fcd = form.cleaned_data
-            photo = fcd.get("preview")
-            print photo
-
+            # photo = fcd.get("preview")
+            # print photo.url
             form.save()
             # api call to server Vova
+            photo = Photo.objects.last()
+            print photo.preview.url
 
             messages.success(request, u"Success")
         else:
