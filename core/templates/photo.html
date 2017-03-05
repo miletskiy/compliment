@@ -34,7 +34,7 @@
             </form>
             <div class="gen-text">
             {% if text %}
-                {{ text }}
+                {{ text|safe }}
             {% endif %}
             </div>
         </div>
