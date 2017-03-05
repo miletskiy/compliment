@@ -18,7 +18,7 @@ class UploadPhotoForm(forms.ModelForm):
     class Meta:
 
         model = Photo
-        fields = ["title", "preview", ]
+        fields = ["preview", ]
 
     def clean_preview(self):
         preview = self.cleaned_data.get('preview')
