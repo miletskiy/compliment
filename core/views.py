@@ -30,7 +30,7 @@ def twitter(request):
     """
     Twitter view
     """
-    text="success"
+    text=""
     consumer_key = "7vcleOTNnGiZWSBQVAfcDsYup"
     consumer_secret = "sc6y1yrOO7xNbDTt5HNwvTGwL59cdRDVuf1DOW9yetwrxlhwTH"
     access_key = "838041296296103936-SH8vBxIYv3SfeFqEfhT5OKgSbIajjpB"

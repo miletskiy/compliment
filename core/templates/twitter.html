@@ -4,7 +4,7 @@
 
 {% block body_background %}{% endblock %}
 {% block container %}
-    <h1>Twitter page</h1>
+    <h1 style="margin-bottom: 30px">Twitter page</h1>
     <form action="{% url "core:twitter" %}" method="post">
     {% csrf_token %}
         {{ form }}
