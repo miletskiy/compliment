@@ -7,6 +7,7 @@ import tweepy
 import requests
 import json
 
+INFO_SERVER = "http://138.68.78.155:8081"
 VISION_SERVER = "http://138.68.78.155:8080"
 DJANGO_SERVER = "http://138.68.78.155:8000"
 
@@ -83,42 +84,57 @@ def twitter(request):
 
 def instagram(request):
     """
-    Instagram view
+    Twitter view
     """
+    text=""
+    consumer_key = "7vcleOTNnGiZWSBQVAfcDsYup"
+    consumer_secret = "sc6y1yrOO7xNbDTt5HNwvTGwL59cdRDVuf1DOW9yetwrxlhwTH"
+    access_key = "838041296296103936-SH8vBxIYv3SfeFqEfhT5OKgSbIajjpB"
+    access_secret = "UzOnwUVJRoh8YH2tVnaaF3o5EMdzaLzHRc0nrbQoYG8rM"
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = NameForm(request.POST)
 
         if form.is_valid():
-            username=form.cleaned_data.get("user_name")
-            looter=InstaLooter(profile=username)
-            with open("outimagesfile.txt", "w") as output:
-                IMG_QUANTITY = 0
-                for media in looter.medias():
-                    if media['is_video']:
-                        url = looter.get_post_info(media['code'])['video_url']
-                    else:
-                        url = media['display_src']
-                    IMG_QUANTITY+=1
-                    if IMG_QUANTITY==10:
-                        break
-                    output.write("{}\n".format(url))
+            username = form.cleaned_data.get("user_name")
+            def get_all_tweets(screen_name):
+                # Twitter only allows access to a users most recent 3240 tweets with this method
 
-            with open("outcomments.txt", "w") as output:
-                for media in looter.medias():
-                    post_info = looter.get_post_info(media['code'])
-                    for comment in post_info['comments']['nodes']:
-                        comm = comment['text']
-                    output.write("{}\n".format(comm))
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            #return HttpResponseRedirect('/thanks/')
+                # authorize twitter, initialize tweepy
+                auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+                auth.set_access_token(access_key, access_secret)
+                api = tweepy.API(auth)
+
+                # make initial request for most recent tweets (200 is the maximum allowed count)
+                all_tweets = api.user_timeline(screen_name=screen_name, count=200)
+
+                processed_tweets = []
+                for tweet in all_tweets:
+                    processed_tweets.append(' '.join(re.sub(
+                        "(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet.text
+                        ).split()))
+
+                params = {
+                    "tweets": processed_tweets
+                }
+
+
+                response = requests.post(INFO_SERVER, json.dumps(params), headers={'content-type': 'application/json'})
+
+                if response.ok:
+                    text = response.text
+                    print(text)
+                    return text
+                else:
+                    text = "error"
+
+            text = get_all_tweets(username)
 
     else:
         form = NameForm()
 
-    return render(request, 'instagram.html', {'form': form})
+    return render(request, 'instagram.html', {'form': form,"text":text})
 
 
 def photo(request):

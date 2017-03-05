@@ -3,12 +3,14 @@
 {% block title %}Compliment{% endblock %}
 
 {% block body_background %}{% endblock %}
-
 {% block container %}
-    <h1>Instagram page</h1>
-    <form action="{% url "core:instagram" %}" method="post">
+    <h1 style="margin-bottom: 30px">Instagram page</h1>
+    <form action="{% url "core:twitter" %}" method="post">
     {% csrf_token %}
         {{ form }}
     <input type="submit" value="Submit" />
     </form>
+    <div class="gen-text">
+    	{{ text|safe }}
+    </div>
 {% endblock %}
