@@ -3,7 +3,7 @@
 /* Main styles
 -------------------------------------------------- */
 body {
-  padding-top: 70px;
+  padding-top: 50px;
   height: 100%;
   width: 100%;
 }
@@ -14,17 +14,40 @@ p {
   margin: 20px 0;
 }
 .body-background {
-  background-image: url('../images/compliment.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+video {
+  width: 100%;
+}
+.image {
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+}
+.btn-danger {
+  background-color: #ff70a0;
+  border-color: #ff578f;
+}
+.btn-danger:hover,
+.btn-danger:active {
+  background-color: #ff3d7e;
+  border-color: #ff246d;
+}
+.btn-danger:focus {
+  outline: none;
 }
 /* Nav styles
 -------------------------------------------------- */
 .navbar-default {
   background-color: #637bad;
+  border-color: #637bad;
 }
 .navbar-default .navbar-brand {
   color: #fff;
+}
+.navbar-default .navbar-collapse {
+  border-color: #637bad;
 }
 .navbar-default .navbar-nav .open a:hover {
   color: #3a5795;

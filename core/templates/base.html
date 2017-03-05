@@ -2,82 +2,100 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %} {% endblock %} </title>
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href=" {% static 'css/core.css' %}">
-  <link rel="stylesheet" href=" {% static 'css/styles.css' %}"> {% block extra_css %}
-  <style type="text/css"></style> {% endblock extra_css %}
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} </title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href=" {% static 'css/core.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/styles.css' %}"> {% block extra_css %}
+    <style type="text/css"></style> {% endblock extra_css %}
 </head>
 
-<body class="{% block body_background %} body-background{% endblock %}">
-  {% block top_menu %}
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'core:index' %}">Compliment</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="{% url 'core:photo' %}">Photo</a></li>
-          <li class=""><a href="{% url 'core:twitter' %}">Twitter</a></li>
-          <li><a href="{% url 'core:instagram' %}">Instagram</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Facebook</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </nav>
-  {% endblock %}
-  <div class="container image">
+<body class="{% block body_background %} body-backgroud{% endblock %}">
+
+{% block top_menu %}
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'core:index' %}">Compliment</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'core:photo' %}">Photo</a></li>
+                    <li class=""><a href="{% url 'core:twitter' %}">Twitter</a></li>
+                    <li><a href="{% url 'core:instagram' %}">Instagram</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Login <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+{% endblock %}
+<video poster="https://i.vimeocdn.com/video/510958963.webp?mw=1800&mh=1012&q=70" id="bgvid" playsinline autoplay muted
+       loop>
+    <source src="https://08-lvl3-pdl.vimeocdn.com/01/4322/4/121614039/343902224.mp4?expires=1488700072&token=0833c38d10965a9b1c77a"
+            type="video/mp4">
+</video>
+<div class="container image">
     <!-- Main component for a primary marketing message or call to action -->
     {% block container %}
-    <div class="jumbotron jumbotron-custom text-center">
-      <h1 class="">Compliment service</h1>
-      <p>Marketing bullshit</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem odio reprehenderit voluptatum aliquid suscipit veritatis aperiam repudiandae itaque et, animi illo magni, voluptate autem, omnis nostrum pariatur nulla est porro.</p>
-      <p class="">
-        <a class="btn btn-lg btn-danger" href="{% url "core:photo" %}" role="button">Try it for free</a>
-      </p>
-    </div>
-    {% endblock %}
-  </div>
-  <!-- /container -->
-  {% block footer %}
-  <footer class="footer">
-    <div class="container">
-        <div class="clearfix">
-            <p class="text-muted footer-text">&copy; Compliment</p>
-            <p class="text-muted footer-text pull-right">2017</p>
+        <div class="jumbotron jumbotron-custom text-center">
+            <h1 class="">Compliment service</h1>
+
+            <p>Marketing bullshit</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem odio reprehenderit voluptatum
+                aliquid suscipit veritatis aperiam repudiandae itaque et, animi illo magni, voluptate autem, omnis
+                nostrum pariatur nulla est porro.</p>
+
+            <p class="">
+                <a class="btn btn-lg btn-danger" href="{% url "core:photo" %}" role="button">Try it for free</a>
+            </p>
         </div>
-    </div>
-  </footer>
-  {% endblock %}
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script type="text/javascript" src={% static "js/core.js" %}></script>
+    {% endblock %}
+</div>
+<!-- /container -->
+
+{% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="clearfix">
+                <p class="text-muted footer-text">&copy; Compliment</p>
+
+                <p class="text-muted footer-text pull-right">2017</p>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src={% static "js/core.js" %}></script>
 </body>
 
 </html>
