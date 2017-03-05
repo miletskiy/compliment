@@ -8,7 +8,15 @@ body {
   width: 100%;
 }
 h1 {
-  color: #3a5795;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 2px black;
+}
+.description {
+  color: #adb9d3;
+  text-shadow: 0 0 1px black;
+  font-weight: bold;
+  margin: 40px 0;
 }
 .body-background {
   background-image: url('../images/compliment.jpg');
@@ -33,7 +41,7 @@ h1 {
   background-color: #637bad;
 }
 .jumbotron-custom {
-  background-color: rgba(99, 123, 173, 0.3);
+  background-color: rgba(99, 123, 173, 0.5);
 }
 .errorlist li {
   color: red;
