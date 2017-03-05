@@ -5,6 +5,7 @@ from instaLooter import InstaLooter
 import re
 import tweepy
 import requests
+import json
 
 VISION_SERVER = "http://138.68.78.155:8080"
 DJANGO_SERVER = "http://138.68.78.155:8000"
@@ -84,13 +85,12 @@ def twitter(request):
                         "(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)", " ", tweet.text
                         ).split()))
 
-                text_request = "*".join(processed_tweets)
-
                 params = {
-                    "url": text_request
+                    "tweets": processed_tweets
                 }
 
-                response = requests.get(VISION_SERVER,params)
+
+                response = requests.post("", json.dumps(params), headers={'content-type': 'application/json'})
 
                 if response.ok:
                     text = response.text
@@ -161,7 +161,6 @@ def photo(request):
             image = Photo.objects.last()
             url = DJANGO_SERVER + image.preview.url
             params = { "url" : url }
-            print url
             response = requests.get(url=VISION_SERVER, params=params, )
 	    if response.ok:
                 text = response.text
