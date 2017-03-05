@@ -9,7 +9,7 @@ import json
 
 INFO_SERVER = "http://138.68.78.155:8081"
 VISION_SERVER = "http://138.68.78.155:8080"
-DJANGO_SERVER = "http://138.68.78.155:8000"
+DJANGO_SERVER = "http://138.68.78.155:80"
 
 from .forms import (
     NameForm,
