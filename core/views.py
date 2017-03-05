@@ -50,16 +50,16 @@ def twitter(request):
                 api = tweepy.API(auth)
 
                 # initialize a list to hold all the tweepy Tweets
-                alltweets = []
+                all_tweets = []
 
                 # make initial request for most recent tweets (200 is the maximum allowed count)
                 new_tweets = api.user_timeline(screen_name=screen_name, count=200)
 
                 # save most recent tweets
-                alltweets.extend(new_tweets)
+                all_tweets.extend(new_tweets)
 
                 # save the id of the oldest tweet less one
-                oldest = alltweets[-1].id - 1
+                oldest = all_tweets[-1].id - 1
 
                 # keep grabbing tweets until there are no tweets left to grab
                 while len(new_tweets) > 0:
@@ -69,12 +69,12 @@ def twitter(request):
                     new_tweets = api.user_timeline(screen_name=screen_name, count=200, max_id=oldest)
 
                     # save most recent tweets
-                    alltweets.extend(new_tweets)
+                    all_tweets.extend(new_tweets)
 
                     # update the id of the oldest tweet less one
-                    oldest = alltweets[-1].id - 1
+                    oldest = all_tweets[-1].id - 1
 
-                    #print "...%s tweets downloaded so far" % (len(alltweets))
+                    #print "...%s tweets downloaded so far" % (len(all_tweets))
 
                 # transform the tweepy tweets into a 2D array that will populate the csv
 
