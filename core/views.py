@@ -7,9 +7,7 @@ import tweepy
 import requests
 
 VISION_SERVER = "http://138.68.78.155:8080"
-# DJANGO_SERVER = "http://138.68.78.155:8000"
-# DJANGO_SERVER = request.get_host()
-
+DJANGO_SERVER = "http://138.68.78.155:8000"
 
 from .forms import (
     NameForm,
@@ -161,10 +159,11 @@ def photo(request):
         if form.is_valid():
             form.save()
             image = Photo.objects.last()
-            url = "{server}{url}".format(**{"server": request.get_host(), "url": image.preview.url, })
-            params = {"url": url}
+            url = DJANGO_SERVER + image.preview.url
+            params = { "url" : url }
+            print url
             response = requests.get(url=VISION_SERVER, params=params, )
-            if response.ok:
+	    if response.ok:
                 text = response.text
                 messages.success(request, u"Success")
             else:
