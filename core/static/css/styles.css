@@ -6,6 +6,8 @@ body {
   padding-top: 50px;
   height: 100%;
   width: 100%;
+  position: relative;
+  text-align: center;
 }
 h1 {
   color: #3a5795;
@@ -19,11 +21,20 @@ p {
 }
 video {
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .image {
-  position: absolute;
-  top: 10vh;
-  left: 5vw;
+  position: relative;
+  display: inline-block;
+  top: 5vh;
+  width: 90%;
+  height: 70%;
+}
+.image .jumbotron {
+  height: 100%;
+  padding-top: 12%;
 }
 .btn-danger {
   background-color: #ff70a0;
@@ -35,6 +46,8 @@ video {
   border-color: #ff246d;
 }
 .btn-danger:focus {
+  background-color: #ff3d7e;
+  border-color: #ff246d;
   outline: none;
 }
 /* Nav styles
