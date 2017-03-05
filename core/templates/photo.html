@@ -32,9 +32,11 @@
                 <button class="btn btn-danger pull-right" type="submit" id="">Get compliment</button>
 
             </form>
+            <div class="gen-text">
             {% if text %}
-                <p>{{ text }}</p>
+                {{ text }}
             {% endif %}
+            </div>
         </div>
         {% if image %}
             <div class="col-xs-12 col-lg-6">
