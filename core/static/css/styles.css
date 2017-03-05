@@ -35,7 +35,7 @@ p {
 }
 video {
   height: 100%;
-  width: 100%;
+  // width: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -49,7 +49,7 @@ video {
 }
 .image .jumbotron {
   height: 100%;
-  padding-top: 12%;
+  // padding-top: 12%;
 }
 .btn-danger {
   background-color: #ff70a0;
