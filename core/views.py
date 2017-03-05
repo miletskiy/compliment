@@ -162,7 +162,7 @@ def photo(request):
             url = DJANGO_SERVER + image.preview.url
             params = { "url" : url }
             response = requests.get(url=VISION_SERVER, params=params, )
-	    if response.ok:
+            if response.ok:
                 text = response.text
                 messages.success(request, u"Success")
             else:
