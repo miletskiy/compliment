@@ -9,25 +9,69 @@
 @white: #fff;
 // @transparent:rgba(58,87,149, 0.3);
 @transparent: rgba(99, 123, 173, 0.3);
+@pink:hsl(340, 100%, 72%);
+
 
 /* Main styles
 -------------------------------------------------- */
 
 body {
-    padding-top: 70px;
+    padding-top: 50px;
     height: 100%;
     width: 100%;
+    position: relative;
+    text-align: center;
 }
 
 h1 {
     color: @navy;
 }
 
+p {
+    margin: 20px 0;
+}
+
 .body-background {
-    background-image: url('../images/compliment.jpg');
+    // background-image: url('../images/compliment.jpg');
+    // background-image: url("https://i.vimeocdn.com/video/510958963.webp?mw=1800&mh=1012&q=70");
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+video {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image {
+    position: relative;
+    display: inline-block;
+    top: 5vh;
+    width: 90%;
+    height: 70%;
+    .jumbotron {
+        height: 100%;
+        padding-top: 12%;
+    }
+}
+
+.btn-danger {
+    background-color: @pink;
+    border-color: darken(@pink, 5%);
+    &:hover,
+    &:active {
+        background-color: darken(@pink, 10%);
+        border-color: darken(@pink, 15%);
+    }
+    &:focus {
+        background-color: darken(@pink, 10%);
+        border-color: darken(@pink, 15%);
+        outline: none;
+    }
+}
+
 
 
 /* Nav styles
@@ -35,9 +79,12 @@ h1 {
 
 .navbar-default {
     background-color: @blue;
-    // border-color: @blue;
+    border-color: @blue;
     .navbar-brand {
         color: @white;
+    }
+    .navbar-collapse {
+        border-color: @blue;
     }
     .navbar-nav {
         .open {
@@ -90,4 +137,8 @@ body {
     /* Set the fixed height of the footer here */
     height: 60px;
     background-color: #f5f5f5;
+}
+
+.footer-text {
+    display: inline-block;
 }
