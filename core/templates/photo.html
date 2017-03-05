@@ -32,6 +32,9 @@
                 <button class="btn btn-primary" type="submit" id="">Get compliment</button>
 
             </form>
+            {% if text %}
+                <p>{{ text }}</p>
+            {% endif %}
         </div>
         {% if image %}
             <div class="col-xs-12 col-lg-6">
@@ -39,7 +42,4 @@
             </div>
         {% endif %}
     </div>
-    {% if text %}
-        <p>{{ text }}</p>
-    {% endif %}
 {% endblock %}

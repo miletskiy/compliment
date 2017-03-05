@@ -163,7 +163,7 @@ def photo(request):
             params = { "url" : url }
             print url
             response = requests.get(url=VISION_SERVER, params=params, )
-	    if response.ok:
+            if response.ok:
                 text = response.text
                 messages.success(request, u"Success")
             else:
