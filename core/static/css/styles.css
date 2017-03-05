@@ -39,6 +39,7 @@ video {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 .image {
   position: relative;
@@ -123,4 +124,20 @@ body {
 label {
   color: white;
   margin: 5px;
+}
+.black {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background: #0006;
+}
+p {
+  text-shadow: 0 0 2px black;
+}
+.gen-text-person {
+  color: white;
+  font-size: 2em;
+  p {
+    margin:10px 0;
+  }
 }

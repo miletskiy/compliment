@@ -4,13 +4,13 @@
 
 {% block body_background %}{% endblock %}
 {% block container %}
-    <h1 style="margin-bottom: 30px">Instagram page</h1>
-    <form action="{% url "core:twitter" %}" method="post">
+    <h1 style="margin-bottom: 30px">Person exploration</h1>
+    <form action="{% url "core:instagram" %}" method="post">
     {% csrf_token %}
         {{ form }}
     <input type="submit" value="Submit" />
     </form>
-    <div class="gen-text">
+    <div class="gen-text-person">
     	{{ text|safe }}
     </div>
 {% endblock %}
