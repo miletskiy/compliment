@@ -55,9 +55,9 @@
 {% endblock %}
 <video poster="https://i.vimeocdn.com/video/510958963.webp?mw=1800&mh=1012&q=70" id="bgvid" playsinline autoplay muted
        loop>
-    <source src="https://08-lvl3-pdl.vimeocdn.com/01/4322/4/121614039/343902224.mp4?expires=1488700072&token=0833c38d10965a9b1c77a"
-            type="video/mp4">
+    <source src="{% static "video/343902224.mp4" %}" type="video/mp4">
 </video>
+
 <div class="container image">
     <!-- Main component for a primary marketing message or call to action -->
     {% block container %}
