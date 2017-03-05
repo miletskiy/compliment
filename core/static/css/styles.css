@@ -10,7 +10,7 @@ body {
   text-align: center;
 }
 h1 {
-  color: white;
+  color: white !important;
   font-weight: bold;
   text-shadow: 0 0 2px black;
 }
@@ -19,6 +19,12 @@ h1 {
   text-shadow: 0 0 1px black;
   font-weight: bold;
   margin: 40px 0;
+}
+.description-top {
+  color: #adb9d3;
+  text-shadow: 0 0 1px black;
+  font-weight: bold;
+  margin: 10px 0;
 }
 p {
   margin: 20px 0;
@@ -38,7 +44,7 @@ video {
   display: inline-block;
   top: 5vh;
   width: 90%;
-  height: 70%;
+  height: 80vh;
 }
 .image .jumbotron {
   height: 100%;
