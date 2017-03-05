@@ -29,16 +29,16 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="{% url 'core:photo' %}">via Photo</a></li>
-          <li class=""><a href="{% url 'core:twitter' %}">via Twitter</a></li>
-          <li><a href="{% url 'core:instagram' %}">via Instagramm</a></li>
+          <li><a href="{% url 'core:photo' %}">Photo</a></li>
+          <li class=""><a href="{% url 'core:twitter' %}">Twitter</a></li>
+          <li><a href="{% url 'core:instagram' %}">Instagram</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagramm</a></li>
+              <li><a href="#">Instagram</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Facebook</a></li>
             </ul>
@@ -57,7 +57,7 @@
       <p>Marketing bullshit</p>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem odio reprehenderit voluptatum aliquid suscipit veritatis aperiam repudiandae itaque et, animi illo magni, voluptate autem, omnis nostrum pariatur nulla est porro.</p>
       <p class="">
-        <a class="btn btn-lg btn-danger" href="#" role="button">Try it for free</a>
+        <a class="btn btn-lg btn-danger" href="{% url "core:photo" %}" role="button">Try it for free</a>
       </p>
     </div>
     {% endblock %}
@@ -66,7 +66,10 @@
   {% block footer %}
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Footer info</p>
+        <div class="clearfix">
+            <p class="text-muted footer-text">&copy; Compliment</p>
+            <p class="text-muted footer-text pull-right">2017</p>
+        </div>
     </div>
   </footer>
   {% endblock %}

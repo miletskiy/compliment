@@ -10,6 +10,9 @@ body {
 h1 {
   color: #3a5795;
 }
+p {
+  margin: 20px 0;
+}
 .body-background {
   background-image: url('../images/compliment.jpg');
   background-repeat: no-repeat;
@@ -55,4 +58,7 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+}
+.footer-text {
+  display: inline-block;
 }
