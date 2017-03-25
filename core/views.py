@@ -7,7 +7,7 @@ import tweepy
 import requests
 import json
 
-INFO_SERVER = "http://138.68.78.155:8081"
+INFO_SERVER = "http://138.68.78.155:8080"
 VISION_SERVER = "http://138.68.78.155:8080"
 DJANGO_SERVER = "http://138.68.78.155:80"
 
